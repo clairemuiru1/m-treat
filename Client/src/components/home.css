@@ -1,0 +1,161 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+.navbar-container {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+
+.logo>img {
+    width: 115px;
+    cursor: pointer;
+}
+
+.nav-items {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-items>h3 {
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nav-items>h3:hover {
+    color: #174EB2;
+}
+
+.side-nav-items {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.side-nav-items>h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #174EB2;
+    cursor: pointer;
+}
+
+.side-nav-items>img {
+    width: 30px;
+    cursor: pointer;
+}
+
+
+.banner-container {
+    display: flex;
+    padding: 50px;
+    background-color: rgba(62, 161, 255, 0.04);
+}
+
+.banner-content {
+    padding: 0 77px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.banner-heading>h2 {
+    font-size: 52px;
+}
+
+.banner-subheading>p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #5C5C5C;
+}
+
+.banner-buttons {
+    display: flex;
+    margin: 20px 0 0 10px;
+    gap: 28px;
+}
+
+.banner-buttons>button {
+    padding: 20px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.banner-appointment-button {
+    background-color: #174EB2;
+    color: #FFF;
+}
+
+.banner-learn-button {
+    color: #174EB2;
+    background-color: #FFF;
+    border: 1px solid #174EB2;
+}
+
+.banner-learn-button:hover {
+    color: #FFF;
+    background-color: #174EB2;
+}
+
+.banner-graphic {
+    width: 100%;
+    position: relative;
+}
+
+
+.banner-graphic>img:first-child {
+    width: 500px;
+}
+
+.service-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    gap: 16px;
+    border-radius: 10px;
+    padding: 34px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.service-container:hover {
+    background-color: #174db26e;
+    transition: all 0.3s ease-out;
+    transform: scale(1.1) translateZ(0);
+    display: flex;
+    gap: 42px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.service-head>h5 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.service-body {
+    width: 15vw;
+    font-size: 16px;
+    color: #5C5C5C;
+}
+.services-container {
+    background-color: rgba(62, 161, 255, 0.04);
+}
+
+.services-container>h3 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 42px;
+}
+
+.services-wrapper {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+  
