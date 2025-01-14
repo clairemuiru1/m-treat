@@ -107,31 +107,43 @@ const Homepage = () => {
 
             </div>
             <div className="services-container">
-            <h3>Our Services</h3>
-            <div className="services-wrapper">
-            {services.map((service, index) => (
-                    <div className="service-container">
+                <h3>Our Services</h3>
+                <div className="services-wrapper">
+                    {services.map((service, index) => (
+                        <div className="service-container">
 
-                        <div className="service-icon">
-                            {service.icon}
+                            <div className="service-icon">
+                                {service.icon}
+                            </div>
+
+                            <div className="service-head">
+                                <h5>{service.name}</h5>
+                            </div>
+
+                            <div className="service-body">
+                                <p>{service.body}</p>
+                            </div>
+
                         </div>
-
-                        <div className="service-head">
-                            <h5>{service.name}</h5>
-                        </div>
-
-                        <div className="service-body">
-                            <p>{service.body}</p>
-                        </div>
-
+                    ))}
+                </div>
+            </div>
+            <div className="partners-container">
+                <h3>Our Health Partners</h3>
+                <p>Research organizations that collaborate on medical research, healthcare innovation<br />and the development of new medical technologies and treatments.</p>
+                <div className="partners-wrapper">
+                    <div className="partner-logo">
+                        <img src= 'https://kenyanwallstreet.com/wp-content/uploads/2024/07/Old-Mutual.jpeg' alt="partner1" />
+                        <img src= 'https://kenyanwallstreet.com/wp-content/uploads/2022/05/Madison-Insurance-Company-Kenya-1024x513-1.png' alt="partner2" />
+                        <img src= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Xi96j-PGXwciPhdSa_D_9NYLPclBhbRhtw&s' alt="partner3" />
+                        <img src= 'https://kenyanalliance.co.ke/wp-content/uploads/2024/08/Blue-Logo.png' alt="partner4" />
+                        <img src= 'https://www.atlas-mag.net/sites/default/files/images/AtlasMagazine_2019-04-No160/Images/MUA.gif' alt="partner5" />
                     </div>
-                     ))}
+                </div>
             </div>
-            </div>
-
             <footer className="footer">
                 <div className="container">
-                    <p>&copy; {new Date().getFullYear()} Our Hospital. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} M-Treat. All rights reserved.</p>
                 </div>
             </footer>
         </div>
