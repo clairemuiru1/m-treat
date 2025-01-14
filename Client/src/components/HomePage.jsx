@@ -143,7 +143,7 @@ const Homepage = () => {
             </div>
             <footer className="footer">
                 <div className="container">
-                    <p>&copy; {new Date().getFullYear()} M-Treat. All rights reserved.</p>
+                             <p>&copy; {new Date().getFullYear()} M-Treat. All rights reserved.</p>
                 </div>
             </footer>
         </div>

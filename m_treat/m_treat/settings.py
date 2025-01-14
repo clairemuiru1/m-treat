@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'm_treat'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,7 +82,7 @@ DATABASES = {
     }
 }
 
-DATABASES["defalt"] = dj_database_url.parse("postgresql://m_treat_ulm4_user:TnnVllYZOAY58DPhWXawUDqxJFVxRGko@dpg-ctradshopnds73fqhd10-a.oregon-postgres.render.com/m_treat_ulm4")
+DATABASES["default"] = dj_database_url.parse("postgresql://m_treat_ulm4_user:TnnVllYZOAY58DPhWXawUDqxJFVxRGko@dpg-ctradshopnds73fqhd10-a.oregon-postgres.render.com/m_treat_ulm4")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

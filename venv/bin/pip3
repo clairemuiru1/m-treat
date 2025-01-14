@@ -1,4 +1,4 @@
-#!/home/claire/FULL-STACK/m-treat/venv/bin/python3
+#!/home/claire/FULL-STACK/m-treat/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
