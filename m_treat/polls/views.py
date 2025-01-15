@@ -145,3 +145,46 @@ def update_profile(request):
         return JsonResponse({"success": True, "message": "Profile updated successfully."})
     except Exception as e:
         return JsonResponse({"success": False, "message": f"An error occurred: {e}"})
+    
+@csrf_exempt
+def fetch_user(request):
+    if request.method != "GET":
+        return JsonResponse({"success": False, "message": "Invalid request method. Use GET."})
+
+    # Access query parameters
+    email = request.GET.get("email", "").strip()
+    otp = request.GET.get("otp", "").strip()
+
+    # Check session data
+    sent_otp = request.session.get("auth_otp")
+    sent_email = request.session.get("auth_email")
+
+    if not sent_otp or not sent_email:
+        return JsonResponse({"success": False, "message": "Session expired. Please request a new OTP."})
+
+    if otp != sent_otp:
+        return JsonResponse({"success": False, "message": "Invalid OTP."})
+
+    if email != sent_email:
+        return JsonResponse({"success": False, "message": "Invalid email address."})
+
+    # Fetch user details
+    try:
+        if not email:
+            return JsonResponse({"success": False, "message": "Email is required."})
+
+        user = Patient.objects.get(email=email)
+        user_data = {
+            "username": user.username,
+            "email": user.email,
+            "phone_number": user.phone_number,
+            "address": user.address,
+            "date_of_birth": user.date_of_birth.strftime("%Y-%m-%d") if user.date_of_birth else None,
+        }
+
+        result = {"success": True, "message": "User credentials fetched successfully.", "user_data": user_data}
+        return JsonResponse(result)
+
+    except Patient.DoesNotExist:
+        result = {"success": False, "message": "User not found."}
+        return JsonResponse(result)
