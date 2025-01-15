@@ -106,3 +106,42 @@ def login_validate(request):
 def c_logout(request):
     logout(request)
     return HttpResponseRedirect("/login")
+
+
+@csrf_exempt
+@login_required
+def update_profile(request):
+    if request.method != "PUT":
+        return JsonResponse({"success": False, "message": "Invalid request method. Use PUT."})
+
+   
+    try:
+        body = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({"success": False, "message": "Invalid JSON data."})
+
+   
+    phone_number = body.get("phone_number", "").strip()
+    address = body.get("address", "").strip()
+    date_of_birth = body.get("date_of_birth", "").strip()
+
+   
+    user = request.user
+
+    if phone_number:
+        user.phone_number = phone_number
+    if address:
+        user.address = address
+    if date_of_birth:
+        try:
+            from datetime import datetime
+            date_of_birth = datetime.strptime(date_of_birth, "%Y-%m-%d").date()
+            user.date_of_birth = date_of_birth
+        except ValueError:
+            return JsonResponse({"success": False, "message": "Date of birth must be in YYYY-MM-DD format."})
+
+    try:
+        user.save()
+        return JsonResponse({"success": True, "message": "Profile updated successfully."})
+    except Exception as e:
+        return JsonResponse({"success": False, "message": f"An error occurred: {e}"})
