@@ -1,14 +1,27 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import { TextField, Button, Typography, Box, InputAdornment } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+// Material-UI Icons
+import PersonIcon from "@mui/icons-material/Person";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import HomeIcon from "@mui/icons-material/Home";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import LockIcon from "@mui/icons-material/Lock";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    phone_number: "",
+    address: "",
+    date_of_birth: "",
     password: "",
   });
+
+  const navigate = useNavigate(); // For navigation
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,10 +30,11 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/api/register/", formData);
+      const response = await axios.post("http://127.0.0.1:8000/signup/validate", formData);
       alert("Registration Successful!");
+      navigate("/login"); // Redirect to login page
     } catch (error) {
-      alert("Error during registration: " + error.response.data.message);
+      alert("Error during registration: " + (error.response?.data?.message || "Unknown error"));
     }
   };
 
@@ -37,6 +51,13 @@ const Signup = () => {
           margin="normal"
           value={formData.name}
           onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PersonIcon />
+              </InputAdornment>
+            ),
+          }}
         />
         <TextField
           fullWidth
@@ -45,14 +66,60 @@ const Signup = () => {
           margin="normal"
           value={formData.email}
           onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailIcon />
+              </InputAdornment>
+            ),
+          }}
         />
         <TextField
           fullWidth
-          label="Phone"
-          name="phone"
+          label="Phone Number"
+          name="phone_number"
           margin="normal"
-          value={formData.phone}
+          value={formData.phone_number}
           onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PhoneIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          fullWidth
+          label="Address"
+          name="address"
+          margin="normal"
+          value={formData.address}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <HomeIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          fullWidth
+          type="date"
+          label="Date of Birth"
+          name="date_of_birth"
+          margin="normal"
+          InputLabelProps={{ shrink: true }}
+          value={formData.date_of_birth}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <CalendarTodayIcon />
+              </InputAdornment>
+            ),
+          }}
         />
         <TextField
           fullWidth
@@ -62,6 +129,13 @@ const Signup = () => {
           margin="normal"
           value={formData.password}
           onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <LockIcon />
+              </InputAdornment>
+            ),
+          }}
         />
         <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
           Register

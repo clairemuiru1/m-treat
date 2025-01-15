@@ -10,7 +10,7 @@ const ProfilePage = () => {
     // Fetch profile data after login
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/profile/");
+        const response = await axios.get("http://localhost:8000/login/validate/");
         setProfile(response.data);
       } catch (error) {
         alert("Error fetching profile: " + error.response.data.message);
