@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls'
 ]
 
 MIDDLEWARE = [
@@ -86,6 +87,8 @@ DATABASES["default"] = dj_database_url.parse("postgresql://m_treat_ulm4_user:Tnn
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
+# AUTH_USER_MODEL = 'polls.Patient'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -123,3 +126,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# login URL
+LOGIN_URL = 'signup'
+
+# email configurations
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'muiruclaire@gmail.com'
+EMAIL_HOST_PASSWORD = 'ybyn iqix ugug efnx'
+EMAIL_PORT = 587
+
+SESSION_ENGINE = "django.contrib.sessions.backends.db" 
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE =True
